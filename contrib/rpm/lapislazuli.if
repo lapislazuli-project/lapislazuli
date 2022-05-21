@@ -1,0 +1,157 @@
+
+## <summary>policy for lapislazuli</summary>
+
+
+########################################
+## <summary>
+##	Transition to lapislazuli.
+## </summary>
+## <param name="domain">
+## <summary>
+##	Domain allowed to transition.
+## </summary>
+## </param>
+#
+interface(`lapislazuli_domtrans',`
+	gen_require(`
+		type lapislazuli_t, lapislazuli_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, lapislazuli_exec_t, lapislazuli_t)
+')
+
+
+########################################
+## <summary>
+##	Execute lapislazuli server in the lapislazuli domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`lapislazuli_initrc_domtrans',`
+	gen_require(`
+		type lapislazuli_initrc_exec_t;
+	')
+
+	init_labeled_script_domtrans($1, lapislazuli_initrc_exec_t)
+')
+
+
+########################################
+## <summary>
+##	Search lapislazuli lib directories.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`lapislazuli_search_lib',`
+	gen_require(`
+		type lapislazuli_var_lib_t;
+	')
+
+	allow $1 lapislazuli_var_lib_t:dir search_dir_perms;
+	files_search_var_lib($1)
+')
+
+########################################
+## <summary>
+##	Read lapislazuli lib files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`lapislazuli_read_lib_files',`
+	gen_require(`
+		type lapislazuli_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	read_files_pattern($1, lapislazuli_var_lib_t, lapislazuli_var_lib_t)
+')
+
+########################################
+## <summary>
+##	Manage lapislazuli lib files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`lapislazuli_manage_lib_files',`
+	gen_require(`
+		type lapislazuli_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	manage_files_pattern($1, lapislazuli_var_lib_t, lapislazuli_var_lib_t)
+')
+
+########################################
+## <summary>
+##	Manage lapislazuli lib directories.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`lapislazuli_manage_lib_dirs',`
+	gen_require(`
+		type lapislazuli_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	manage_dirs_pattern($1, lapislazuli_var_lib_t, lapislazuli_var_lib_t)
+')
+
+
+########################################
+## <summary>
+##	All of the rules required to administrate
+##	a lapislazuli environment
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+## <param name="role">
+##	<summary>
+##	Role allowed access.
+##	</summary>
+## </param>
+## <rolecap/>
+#
+interface(`lapislazuli_admin',`
+	gen_require(`
+		type lapislazuli_t;
+		type lapislazuli_initrc_exec_t;
+		type lapislazuli_var_lib_t;
+	')
+
+	allow $1 lapislazuli_t:process { ptrace signal_perms };
+	ps_process_pattern($1, lapislazuli_t)
+
+	lapislazuli_initrc_domtrans($1)
+	domain_system_change_exemption($1)
+	role_transition $2 lapislazuli_initrc_exec_t system_r;
+	allow $2 system_r;
+
+	files_search_var_lib($1)
+	admin_pattern($1, lapislazuli_var_lib_t)
+
+')
+

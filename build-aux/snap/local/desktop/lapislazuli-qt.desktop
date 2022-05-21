@@ -1,0 +1,16 @@
+# http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-1.0.html
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Lapislazuli Core
+Comment=Lapislazuli Core QT main network
+GenericName=Lapislazuli Digital Currency QT client main network
+Exec=lapislazuli-core.qt %u
+Terminal=false
+Type=Application
+Icon=${SNAP}/share/pixmaps/lapislazuli.png
+MimeType=x-scheme-handler/lapislazuli;
+Categories=X-Office;X-Finance;
+Keywords=internet;lapislazuli;zLiLLi;piv;core;wallet;qt;main;snap;launchpad;crypto;digital;currency;coin;token;zerocoin;
+Version=1.0
+Name[en_US]=lapislazuli-qt.desktop

@@ -1,0 +1,11 @@
+[Protocol]
+exec=lapislazuli-qt '%u'
+protocol=lapislazuli
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false

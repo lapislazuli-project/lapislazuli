@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Lapislazuli Core
+Comment=Lapislazuli P2P Cryptocurrency
+Exec=lapislazuli-qt %u
+Terminal=false
+Type=Application
+Icon=lapislazuli128
+MimeType=x-scheme-handler/lapislazuli;
+Categories=Office;Finance;
+StartupWMClass=Lapislazuli-qt
+Name[en_US]=lapislazuli-qt.desktop

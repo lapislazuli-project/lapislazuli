@@ -1,0 +1,6 @@
+usr/local/bin/lapislazuli-qt usr/bin
+share/pixmaps/lapislazuli32.xpm usr/share/pixmaps
+share/pixmaps/lapislazuli16.xpm usr/share/pixmaps
+share/pixmaps/lapislazuli128.png usr/share/pixmaps
+debian/lapislazuli-qt.desktop usr/share/applications
+debian/lapislazuli-qt.protocol usr/share/kde4/services/

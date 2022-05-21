@@ -1,0 +1,8 @@
+/usr/bin/lapislazuli-cli		--	gen_context(system_u:object_r:lapislazuli_exec_t,s0)
+/usr/sbin/lapislazulid		--	gen_context(system_u:object_r:lapislazuli_exec_t,s0)
+/usr/lib(64)?/lapislazuli/lapislazulid		--	gen_context(system_u:object_r:lapislazuli_exec_t,s0)
+
+/etc/lapislazuli(/.*)?		gen_context(system_u:object_r:lapislazuli_conf_t,s0)
+/var/lib/lapislazuli(/.*)?		gen_context(system_u:object_r:lapislazuli_var_lib_t,s0)
+
+(/var)?/run/lapislazulid(/.*)?   gen_context(system_u:object_r:lapislazuli_var_run_t,s0)
