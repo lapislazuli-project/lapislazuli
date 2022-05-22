@@ -4,7 +4,7 @@ Lapislazuli Core integration/staging repository
 ### Coin Specs
 
 • PoW Algorithm: Quark  
-• Premine: 2 000 000 LiLLi (1%)  
+• Premine: 2 000 000 LiLLi
 • PoW Blocks: 1 - 250  
 • PoS Blocks: Starting from 251  
 • Block Time: 60 Seconds  
